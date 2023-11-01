@@ -1,21 +1,24 @@
 package br.com.alura.cosmicshop.model;
 
-public class Cliente {
+public class Client {
     //Variaveis, construtor, getters e setters
     private String nome;
     private String planeta;
     private String descricaoDaCompra;
     private double valorDaCompra;
-    private double limiteInicialDoCartao; //Definido pelo Cliente
+    private double limiteDoCartao; //Definido pelo Cliente
 
 
-    public Cliente(String nome, String planeta, String descricaoDaCompra, double valorDaCompra, double limiteDoCartao) {
+    public Client(String nome, String planeta, String descricaoDaCompra, double valorDaCompra, double limiteDoCartao) {
 
         this.nome = nome;
         this.planeta = planeta;
         this.descricaoDaCompra = descricaoDaCompra;
         this.valorDaCompra = valorDaCompra;
-        this.limiteInicialDoCartao = limiteDoCartao;
+        this.limiteDoCartao = limiteDoCartao;
+    }
+    public Client() {
+
     }
 
     public String getNome() {
@@ -50,13 +53,16 @@ public class Cliente {
         this.valorDaCompra = valorDaCompra;
     }
 
-    public double getLimiteInicialDoCartao() {
-        return limiteInicialDoCartao;
+    public double getLimiteDoCartao() {
+        return limiteDoCartao;
     }
 
-    public void setLimiteInicialDoCartao(double limiteInicialDoCartao) {
-        this.limiteInicialDoCartao = limiteInicialDoCartao;
+    public void setLimiteDoCartao(double limiteDoCartao) {
+        this.limiteDoCartao = limiteDoCartao;
     }
 
-
+    //Metodos mais genericos da classe mae
+    public void inserirLimite(double limiteDoCartao) {
+        this.limiteDoCartao += limiteDoCartao;
+    }
 }
