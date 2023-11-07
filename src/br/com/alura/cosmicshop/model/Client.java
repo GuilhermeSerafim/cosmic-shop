@@ -3,6 +3,7 @@ package br.com.alura.cosmicshop.model;
 import br.com.alura.cosmicshop.calculations.ItemCompra;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -18,7 +19,7 @@ public class Client implements Comparable<Client> {
     private String sair2;
     private String raridade; //Criado para remover o bug do nextInt (o nextInt() não consome a quebra de linha)
     private Scanner in = new Scanner(System.in); //Encapsulando Scanner
-    private List<ItemCompra> itensDeCompra = new ArrayList<>(); //Aqui vai ser armazado o que for instanciado no adicionar item
+    private List<ItemCompra> arrayItensDeCompras = new ArrayList<>(); //Aqui vai ser armazado o que for instanciado no adicionar item
 
     //Não vamos inserir diretamente no construtor, vamos inserir atráves de metodos para o usuario inserir pelo Scanner
     public Client(String nome, String planeta, String descricaoDaCompra, double valorDaCompra, double limiteDoCartao) {
@@ -137,6 +138,8 @@ public class Client implements Comparable<Client> {
 
     //Criando menu
     public void adicionarItens() {
+
+
         System.out.printf("""
                                 
                                 
@@ -161,7 +164,7 @@ public class Client implements Comparable<Client> {
             this.raridade = this.in.nextLine();
 
             ItemCompra item = new ItemCompra(descricaoDaCompra, valorDaCompra, raridade);
-            itensDeCompra.add(item);
+            arrayItensDeCompras.add(item);
 
             System.out.printf("""
                     Aqui está seu item:
@@ -177,9 +180,13 @@ public class Client implements Comparable<Client> {
         }
     }
 
-    public void mostrarItensDaCompra() {
+    public void mostrarItensDaCompraComparados() {
+        //Comparador para ordenar preço
+        Comparator<ItemCompra> itensComparador = Comparator.comparing(ItemCompra::getValor);
+        arrayItensDeCompras.sort(itensComparador);
+
         System.out.println("Todos os itens: ");
-        for (ItemCompra item : itensDeCompra) {
+        for (ItemCompra item : arrayItensDeCompras) {
             System.out.println("**************");
             System.out.printf("""
                     Descrição: %s

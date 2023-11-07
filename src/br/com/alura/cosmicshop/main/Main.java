@@ -4,7 +4,6 @@ import br.com.alura.cosmicshop.model.Client;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 public class Main {
@@ -13,12 +12,12 @@ public class Main {
         Client guilherme = new Client();
         guilherme.inserirDadosIniciais();
         guilherme.adicionarItens();
-        guilherme.mostrarItensDaCompra();
+        guilherme.mostrarItensDaCompraComparados();
 
         Client anderson = new Client();
         anderson.inserirDadosIniciais();
         anderson.adicionarItens();
-        anderson.mostrarItensDaCompra();
+        anderson.mostrarItensDaCompraComparados();
 
         //A ordenação para mostrar os clientes são em ordem alfabética, enquanto a dos itens é por valor
         List<Client> clientes = new ArrayList<>();
@@ -27,7 +26,9 @@ public class Main {
         //Ordenação alfabética pelo nome do cliente
         Collections.sort(clientes);
         for(Client client: clientes) {
+            System.out.println("---------------");
             client.exibirCliente();
+            System.out.println("---------------");
         }
     }
 }

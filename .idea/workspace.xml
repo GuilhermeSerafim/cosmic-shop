@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2875622b-9496-4b0c-ae99-e25cca361cac" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/br/com/alura/cosmicshop/calculations/ItemCompra.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/br/com/alura/cosmicshop/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/com/alura/cosmicshop/main/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/br/com/alura/cosmicshop/model/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/com/alura/cosmicshop/model/Client.java" afterDir="false" />
@@ -46,6 +45,11 @@
     "project.structure.side.proportion": "0.2"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="br.com.alura.cosmicshop.model" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="br.com.alura.cosmicshop.main.Main" />
