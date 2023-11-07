@@ -7,8 +7,13 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         System.out.println("Bem vindo a Cosmic Shop");
-        Client cliente = new Client();
-        cliente.inserirDadosIniciais();
-        cliente.adicionarItem();
+        Client guilherme = new Client();
+        guilherme.inserirDadosIniciais();
+        guilherme.adicionarItem();
+        guilherme.mostrarItensDaCompra();
+
+//        Client anderson = new Client();
+//        anderson.inserirDadosIniciais();
+//        anderson.adicionarItem();
     }
 }

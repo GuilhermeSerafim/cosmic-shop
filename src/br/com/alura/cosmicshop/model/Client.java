@@ -1,5 +1,9 @@
 package br.com.alura.cosmicshop.model;
 
+import br.com.alura.cosmicshop.calculations.ItemCompra;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Client {
@@ -11,8 +15,10 @@ public class Client {
     private double limiteDoCartao;
     private String plano;
     private String sair; //para sair do menu ou inserir dados iniciais
+    private String sair2;
     private String raridade; //Criado para remover o bug do nextInt (o nextInt() não consome a quebra de linha)
     private Scanner in = new Scanner(System.in); //Encapsulando Scanner
+    private List<ItemCompra> itensDeCompra = new ArrayList<>(); //Aqui vai ser armazado o que for instanciado no adicionar item
 
     //Não vamos inserir diretamente no construtor, vamos inserir atráves de metodos para o usuario inserir pelo Scanner
     public Client(String nome, String planeta, String descricaoDaCompra, double valorDaCompra, double limiteDoCartao) {
@@ -84,8 +90,8 @@ public class Client {
                 Quer participar? Digite 'QUERO!'
                 Ou 'Sair' para voltar ao seu planeta...
                 """);
-        this.sair = this.in.nextLine().toUpperCase();
-        while (!this.sair.equals("Sair".toUpperCase())) {
+        this.sair = this.in.nextLine();
+        while (!this.sair.equals("Sair")) {
             System.out.println("""
                     Planos disponiveis: (Em breve teremos o plano Metaverso)
                     Astro studies 📚
@@ -128,33 +134,59 @@ public class Client {
         }
 
     }
+
     //Criando menu
     public void adicionarItem() {
-        System.out.println("""
-                
-                
-                Olá Astro!
+        System.out.printf("""
+                                
+                                
+                Olá %s!
                 Digite 'continuar' caso queira adquirir algum item
-                Ou 'sair' para encerrar agora o sistema, ou também, para finalizar suas compras
-                """);
-        this.sair = this.in.nextLine();
-        while (!sair.equals("Sair")) {
-            System.out.println("O que você procura? ");
+                Ou 'sair' para encerrar agora o sistema
+                """, nome);
+        this.sair2 = this.in.nextLine();
+        while (!this.sair2.equals("Sair")) {
+            System.out.println("""
+                                        
+                    O que você procura?
+                    """);
             this.descricaoDaCompra = this.in.nextLine();
 
             System.out.println("Digite o valor substimado: ");
             this.valorDaCompra = this.in.nextDouble();
+            this.limiteDoCartao = this.limiteDoCartao - this.valorDaCompra;
             this.in.nextLine(); //Tratando enter pendente //Explicação: se você chamar nextLine() imediatamente após nextDouble(), o nextLine() irá consumir o Enter pendente, o que pode levar a comportamentos inesperados, como a leitura de uma linha vazia.
 
             System.out.println("Qual é a raridade desse item no seu planeta? ");
             this.raridade = this.in.nextLine();
 
+            ItemCompra item = new ItemCompra(descricaoDaCompra, valorDaCompra, raridade);
+            itensDeCompra.add(item);
+
             System.out.printf("""
                     Aqui está seu item:
                     %s
+                    %.2f
                     %s
-                    %s
-                    """, descricaoDaCompra, valorDaCompra, raridade);
+                                        
+                    Limite disponível:
+                    %.2f
+                    """, descricaoDaCompra, valorDaCompra, raridade, limiteDoCartao);
+            System.out.println("Digite qualquer coisa se quiser continuar, ou 'Sair' para finalizar as compras");
+            this.sair2 = this.in.nextLine();
+        }
+    }
+
+    public void mostrarItensDaCompra() {
+        System.out.println("Todos os itens: ");
+        for (ItemCompra item : itensDeCompra) {
+            System.out.println("**************");
+            System.out.printf("""
+                    Descrição: %s
+                    Valor: %.2f
+                    Raridade: %s
+                    """, item.getDescricao(), item.getValor(), item.getRaridade());
+            System.out.println("**************");
         }
     }
 }
