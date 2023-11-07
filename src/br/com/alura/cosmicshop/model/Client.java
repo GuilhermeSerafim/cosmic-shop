@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Client {
+public class Client implements Comparable<Client> {
     //Variaveis, construtor, getters e setters
     private String nome;
     private String planeta;
@@ -136,7 +136,7 @@ public class Client {
     }
 
     //Criando menu
-    public void adicionarItem() {
+    public void adicionarItens() {
         System.out.printf("""
                                 
                                 
@@ -188,5 +188,17 @@ public class Client {
                     """, item.getDescricao(), item.getValor(), item.getRaridade());
             System.out.println("**************");
         }
+    }
+
+    public void exibirCliente() {
+        System.out.println(getNome());
+        System.out.println(getPlaneta());
+        System.out.println(plano);
+        System.out.println(limiteDoCartao);
+    }
+
+    @Override
+    public int compareTo(Client outroClient) {
+        return this.getNome().compareTo(outroClient.getNome());
     }
 }
