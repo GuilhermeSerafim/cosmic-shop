@@ -118,10 +118,11 @@ public class Client implements Comparable<Client> {
                         %n""", this.limiteDoCartao);
                 break;
 
-            } else if (this.plano.equals(" Centro de Apoio Interspacial (CAI)".toUpperCase())) {
+            } else if (this.plano.equals("Centro de Apoio Interspacial (CAI)".toUpperCase())) {
                 this.limiteDoCartao = 300000.80;
                 System.out.printf("""
-                        A CAI é uma instalação dedicada a fornecer assistência, recursos e suporte para comunidades em ambientes interestelares
+                        A CAI é uma instalação dedicada a fornecer assistência, recursos e suporte para comunidades em ambientes interestelares.
+                        A CAI dá suporte à vidas complexas espalhada pelo universo!
                         Você tem disponível %.2f Stelares. Cultive a harmonia nesse vasto universo!🕊️
                         """, this.limiteDoCartao);
                 break;
@@ -155,8 +156,13 @@ public class Client implements Comparable<Client> {
                     """);
             this.descricaoDaCompra = this.in.nextLine();
 
-            System.out.println("Digite o valor substimado: ");
+            System.out.println("Digite o valor da sua compra: ");
             this.valorDaCompra = this.in.nextDouble();
+            if(this.valorDaCompra > this.limiteDoCartao) {
+                System.out.println("Saldo insuficiente | Limite do cartão estelar");
+                System.out.println(this.limiteDoCartao);
+                continue;
+            }
             this.limiteDoCartao = this.limiteDoCartao - this.valorDaCompra;
             this.in.nextLine(); //Tratando enter pendente //Explicação: se você chamar nextLine() imediatamente após nextDouble(), o nextLine() irá consumir o Enter pendente, o que pode levar a comportamentos inesperados, como a leitura de uma linha vazia.
 

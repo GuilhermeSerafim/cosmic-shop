@@ -5,8 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2875622b-9496-4b0c-ae99-e25cca361cac" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/com/alura/cosmicshop/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/com/alura/cosmicshop/main/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/br/com/alura/cosmicshop/model/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/com/alura/cosmicshop/model/Client.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -39,7 +37,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "main",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2"
