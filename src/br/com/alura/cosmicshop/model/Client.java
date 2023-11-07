@@ -158,7 +158,10 @@ public class Client implements Comparable<Client> {
 
             System.out.println("Digite o valor da sua compra: ");
             this.valorDaCompra = this.in.nextDouble();
-            if(this.valorDaCompra > this.limiteDoCartao) {
+            if (limiteDoCartao <= 0) {
+                System.out.println("Você não tem stelares");
+                break;
+            } else if (this.valorDaCompra > this.limiteDoCartao) {
                 System.out.println("Saldo insuficiente | Limite do cartão estelar");
                 System.out.println(this.limiteDoCartao);
                 continue;
