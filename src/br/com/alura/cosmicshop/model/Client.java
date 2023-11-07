@@ -11,9 +11,10 @@ public class Client {
     private double limiteDoCartao;
     private String plano;
     private String sair; //para sair do menu ou inserir dados iniciais
+    private String raridade; //Criado para remover o bug do nextInt (o nextInt() não consome a quebra de linha)
     private Scanner in = new Scanner(System.in); //Encapsulando Scanner
 
-
+    //Não vamos inserir diretamente no construtor, vamos inserir atráves de metodos para o usuario inserir pelo Scanner
     public Client(String nome, String planeta, String descricaoDaCompra, double valorDaCompra, double limiteDoCartao) {
 
         this.nome = nome;
@@ -79,18 +80,18 @@ public class Client {
         System.out.println("Digite seu planeta: ");
         this.planeta = this.in.nextLine();
         System.out.println("""
-        Junte-se a nós e explore o cosmos infinito. 
-        Quer participar? Digite 'QUERO!'
-        Ou 'Sair' para voltar ao seu planeta...
-        """);
+                Junte-se a nós e explore o cosmos infinito. 
+                Quer participar? Digite 'QUERO!'
+                Ou 'Sair' para voltar ao seu planeta...
+                """);
         this.sair = this.in.nextLine().toUpperCase();
         while (!this.sair.equals("Sair".toUpperCase())) {
             System.out.println("""
-                Planos disponiveis: (Em breve teremos o plano Metaverso)
-                Astro studies 📚
-                Stellar transport 🚀
-                Centro de Apoio Interspacial (CAI) 🚰
-                    """);
+                    Planos disponiveis: (Em breve teremos o plano Metaverso)
+                    Astro studies 📚
+                    Stellar transport 🚀
+                    Centro de Apoio Interspacial (CAI) 🚰
+                        """);
             this.plano = this.in.nextLine().toUpperCase(); //O to upper case vai servir pra ignorar se é minusculo ou maisculo quando o usuario digitar
             if (this.plano.equals("Astro studies".toUpperCase())) {
                 this.limiteDoCartao = 50010.70;
@@ -126,20 +127,34 @@ public class Client {
             this.plano = this.in.nextLine().toUpperCase();
         }
 
-//Percemos um bug, vamos arrumar ele la em cima primeiro
-//        //Menu para lançamento de compras
+    }
+    //Criando menu
+    public void adicionarItem() {
+        System.out.println("""
+                
+                
+                Olá Astro!
+                Digite 'continuar' caso queira adquirir algum item
+                Ou 'sair' para encerrar agora o sistema, ou também, para finalizar suas compras
+                """);
+        this.sair = this.in.nextLine();
+        while (!sair.equals("Sair")) {
+            System.out.println("O que você procura? ");
+            this.descricaoDaCompra = this.in.nextLine();
 
-//        System.out.println("Menu da Cosmic Shop");
-//        this.descricaoDaCompra = this.in.nextLine();
-//        while (encerrarMenu.equals("Sair")) {
-//            System.out.println("Digite a descrição da sua compra: ");
-//            this.descricaoDaCompra = this.in.nextLine();
-//
-////            System.out.println("Digite o valor: ");
-////            this.valorDaCompra = this.in.nextDouble();
-//
-//            System.out.println("Digite 0 para sair do menu ou 1 para continuar");
-//        }
+            System.out.println("Digite o valor substimado: ");
+            this.valorDaCompra = this.in.nextDouble();
+            this.in.nextLine(); //Tratando enter pendente //Explicação: se você chamar nextLine() imediatamente após nextDouble(), o nextLine() irá consumir o Enter pendente, o que pode levar a comportamentos inesperados, como a leitura de uma linha vazia.
 
+            System.out.println("Qual é a raridade desse item no seu planeta? ");
+            this.raridade = this.in.nextLine();
+
+            System.out.printf("""
+                    Aqui está seu item:
+                    %s
+                    %s
+                    %s
+                    """, descricaoDaCompra, valorDaCompra, raridade);
+        }
     }
 }

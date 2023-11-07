@@ -9,5 +9,6 @@ public class Main {
         System.out.println("Bem vindo a Cosmic Shop");
         Client cliente = new Client();
         cliente.inserirDadosIniciais();
+        cliente.adicionarItem();
     }
 }
