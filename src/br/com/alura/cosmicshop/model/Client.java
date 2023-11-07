@@ -10,6 +10,7 @@ public class Client {
     private double valorDaCompra;
     private double limiteDoCartao;
     private String plano;
+    private String sair; //para sair do menu ou inserir dados iniciais
     private Scanner in = new Scanner(System.in); //Encapsulando Scanner
 
 
@@ -73,19 +74,24 @@ public class Client {
 
     //Forma mais otimizada e objetiva
     public void inserirDadosIniciais() {
-        System.out.println("Digite o seu nome: ");
+        System.out.println("Digite a sua entidade: ");
         this.nome = this.in.nextLine();
         System.out.println("Digite seu planeta: ");
         this.planeta = this.in.nextLine();
         System.out.println("""
-                Digite seu plano ou Sair para sair do sistema:
-                Planos disponiveis:
+        Junte-se a nós e explore o cosmos infinito. 
+        Quer participar? Digite 'QUERO!'
+        Ou 'Sair' para voltar ao seu planeta...
+        """);
+        this.sair = this.in.nextLine().toUpperCase();
+        while (!this.sair.equals("Sair".toUpperCase())) {
+            System.out.println("""
+                Planos disponiveis: (Em breve teremos o plano Metaverso)
                 Astro studies 📚
                 Stellar transport 🚀
                 Centro de Apoio Interspacial (CAI) 🚰
-                """);
-        this.plano = this.in.nextLine().toUpperCase(); //O to upper case vai servir pra ignorar se é minusculo ou maisculo quando o usuario digitar
-        while (!this.plano.equals("Sair")) {
+                    """);
+            this.plano = this.in.nextLine().toUpperCase(); //O to upper case vai servir pra ignorar se é minusculo ou maisculo quando o usuario digitar
             if (this.plano.equals("Astro studies".toUpperCase())) {
                 this.limiteDoCartao = 50010.70;
                 System.out.printf("""
@@ -93,6 +99,7 @@ public class Client {
                         Eles podem estar envolvidos em explorar novos planetas, investigar estrelas, identificar exoplanetas e estudar fenômenos cósmicos.
                         Você tem disponível %.2f Stelares disponiveis para suas pesquisas!🔭
                         """, this.limiteDoCartao);
+                break;
 
             } else if (this.plano.equals("Stellar transport".toUpperCase())) {
                 this.limiteDoCartao = 1000000;
@@ -101,13 +108,15 @@ public class Client {
                         Eles seriam a espinha dorsal da exploração espacial.
                         Você tem disponível %.2f Stelares para suas viajens, explore e viva experiências únicas!🚀
                         %n""", this.limiteDoCartao);
+                break;
 
             } else if (this.plano.equals(" Centro de Apoio Interspacial (CAI)".toUpperCase())) {
                 this.limiteDoCartao = 300000.80;
                 System.out.printf("""
                         A CAI é uma instalação dedicada a fornecer assistência, recursos e suporte para comunidades em ambientes interestelares
-                        Você tem disponível 300.000.30 Stelares. Cultive a harmonia nesse vasto universo!🕊️
+                        Você tem disponível %.2f Stelares. Cultive a harmonia nesse vasto universo!🕊️
                         """, this.limiteDoCartao);
+                break;
 
             } else {
                 System.out.println("Opção inválida. Tente novamente.");
@@ -116,5 +125,21 @@ public class Client {
             //Pois assim que o loop se encerra, ele não volta na variavel da linha 87, ele executa o loop novamente, então tenho que perguntar novamente...
             this.plano = this.in.nextLine().toUpperCase();
         }
+
+//Percemos um bug, vamos arrumar ele la em cima primeiro
+//        //Menu para lançamento de compras
+
+//        System.out.println("Menu da Cosmic Shop");
+//        this.descricaoDaCompra = this.in.nextLine();
+//        while (encerrarMenu.equals("Sair")) {
+//            System.out.println("Digite a descrição da sua compra: ");
+//            this.descricaoDaCompra = this.in.nextLine();
+//
+////            System.out.println("Digite o valor: ");
+////            this.valorDaCompra = this.in.nextDouble();
+//
+//            System.out.println("Digite 0 para sair do menu ou 1 para continuar");
+//        }
+
     }
 }
