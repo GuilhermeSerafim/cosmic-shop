@@ -21,7 +21,7 @@
             System.out.printf("""
                     Localização:
                     País - %s
-                    Estado - %s 
+                    Estado - %s
                     """, pais, estado);
         }
     }

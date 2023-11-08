@@ -10,11 +10,11 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Bem vindo a Cosmic Shop");
-        Humano guilherme = new Humano();
-        guilherme.inserirDadosIniciais();
-        guilherme.adicionarItens();
-        guilherme.mostrarItensDaCompraComparados();
+//        System.out.println("Bem vindo a Cosmic Shop");
+//        Humano guilherme = new Humano();
+//        guilherme.inserirDadosIniciais();
+//        guilherme.adicionarItens();
+//        guilherme.mostrarItensDaCompraComparados();
 
         Elemental nexastral = new Elemental();
         nexastral.inserirDadosIniciais();
@@ -23,7 +23,7 @@ public class Main {
 
         //A ordenação para mostrar os clientes são em ordem alfabética, enquanto a dos itens é por valor
         List<Client> clientes = new ArrayList<>();
-        clientes.add(guilherme);
+//        clientes.add(guilherme);
         clientes.add(nexastral);
 
         //Ordenação alfabética pelo nome do cliente

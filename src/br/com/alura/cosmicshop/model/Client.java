@@ -11,24 +11,11 @@ public class Client implements Comparable<Client> {
     //Variaveis, construtor, getters e setters
     private String entidade;
     private String planeta;
-    private String descricaoDaCompra;
-    private double valorDaCompra;
     private double limiteDoCartao;
     private String plano;
     private String sair; //para sair do menu ou inserir dados iniciais
-    private String raridade; //Criado para remover o bug do nextInt (o nextInt() não consome a quebra de linha)
-    private Scanner in = new Scanner(System.in); //Encapsulando Scanner
-    private List<ItemCompra> arrayItensDeCompras = new ArrayList<>(); //Aqui vai ser armazado o que for instanciado no adicionar item
-
-    //Não vamos inserir diretamente no construtor, vamos inserir atráves de metodos para o usuario inserir pelo Scanner
-    public Client(String nome, String planeta, String descricaoDaCompra, double valorDaCompra, double limiteDoCartao) {
-
-        this.entidade = nome;
-        this.planeta = planeta;
-        this.descricaoDaCompra = descricaoDaCompra;
-        this.valorDaCompra = valorDaCompra;
-        this.limiteDoCartao = limiteDoCartao;
-    }
+    private final Scanner in = new Scanner(System.in); //Encapsulando Scanner
+    private final List<ItemCompra> arrayItensDeCompras = new ArrayList<>(); //Aqui vai ser armazado o que for instanciado no adicionar item
 
     public Client() {
 
@@ -38,54 +25,13 @@ public class Client implements Comparable<Client> {
         return entidade;
     }
 
-    public void setEntidade(String entidade) {
-        this.entidade = entidade;
-    }
-
     public String getPlaneta() {
         return planeta;
-    }
-
-    public void setPlaneta(String planeta) {
-        this.planeta = planeta;
-    }
-
-    public String getDescricaoDaCompra() {
-        return descricaoDaCompra;
-    }
-
-    public void setDescricaoDaCompra(String descricaoDaCompra) {
-        this.descricaoDaCompra = descricaoDaCompra;
-    }
-
-    public double getValorDaCompra() {
-        return valorDaCompra;
-    }
-
-    public void setValorDaCompra(double valorDaCompra) {
-        this.valorDaCompra = valorDaCompra;
-    }
-
-    public double getLimiteDoCartao() {
-        return limiteDoCartao;
-    }
-
-    public void setLimiteDoCartao(double limiteDoCartao) {
-        this.limiteDoCartao = limiteDoCartao;
     }
 
     public Scanner getIn() {
         return in;
     }
-
-    public void setIn(Scanner in) {
-        this.in = in;
-    }
-
-    //    //Metodos mais genericos da classe mae
-//    public void inserirLimite(double limiteDoCartao) {
-//        this.limiteDoCartao += limiteDoCartao;
-//    } nem to usando...
 
     //Forma mais otimizada e objetiva
     public void inserirDadosIniciais() {
@@ -111,7 +57,7 @@ public class Client implements Comparable<Client> {
             if (this.plano.equals("Astro studies".toUpperCase())) {
                 this.limiteDoCartao = 50010.70;
                 System.out.printf("""
-                        Este grupo seria responsável por realizar pesquisas e estudos aprofundados no campo da astronomia e da astrofísica. 
+                        Este grupo seria responsável por realizar pesquisas e estudos aprofundados no campo da astronomia e da astrofísica.
                         Eles podem estar envolvidos em explorar novos planetas, investigar estrelas, identificar exoplanetas e estudar fenômenos cósmicos.
                         Você tem disponível %.2f Stelares disponiveis para suas pesquisas!🔭
                         """, this.limiteDoCartao);
@@ -162,25 +108,26 @@ public class Client implements Comparable<Client> {
                                         
                     O que você procura?
                     """);
-            this.descricaoDaCompra = this.in.nextLine();
+            String descricaoDaCompra = this.in.nextLine();
 
             System.out.println("Digite o valor da sua compra: ");
-            this.valorDaCompra = this.in.nextDouble();
+            double valorDaCompra = this.in.nextDouble();
             //Validações
             if (limiteDoCartao <= 0) {
                 System.out.println("Você não tem stelares");
                 break;
-            } else if (this.valorDaCompra > this.limiteDoCartao) {
+            } else if (valorDaCompra > this.limiteDoCartao) {
                 System.out.println("Saldo insuficiente | Limite do cartão estelar");
                 System.out.println(this.limiteDoCartao);
                 this.in.nextLine(); // Consumir a quebra de linha da linha 168
                 continue;
             }
-            this.limiteDoCartao = this.limiteDoCartao - this.valorDaCompra;
+            this.limiteDoCartao = this.limiteDoCartao - valorDaCompra;
             this.in.nextLine(); //Tratando enter pendente //Explicação: se você chamar nextLine() imediatamente após nextDouble(), o nextLine() irá consumir o Enter pendente, o que pode levar a comportamentos inesperados, como a leitura de uma linha vazia.
 
             System.out.println("Qual é a raridade desse item no seu planeta? ");
-            this.raridade = this.in.nextLine();
+            //Criado para remover o bug do nextInt (o nextInt() não consome a quebra de linha)
+            String raridade = this.in.nextLine();
 
             ItemCompra item = new ItemCompra(descricaoDaCompra, valorDaCompra, raridade);
             arrayItensDeCompras.add(item);

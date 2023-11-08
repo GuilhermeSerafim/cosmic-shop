@@ -16,19 +16,18 @@ public class Elemental extends Client {
         System.out.println("Qual é o seu nível de controle, sobre o seu elemental?");
         System.out.println("Digite um número de 1 a 3");
         nivelDeControleElemental = getIn().nextInt();
-        while((nivelDeControleElemental == 1 || nivelDeControleElemental == 2 || nivelDeControleElemental == 3)) {
-            if (3 >= nivelDeControleElemental) {
-                System.out.println("Temos treinamentos no nosso mundo em metaverso!");
-                System.out.println("Aprenda a controlar sua habilidades, sem machucar ninguém!");
-                break;
-            } else if(nivelDeControleElemental >= 4) {
-                System.out.printf("Parabéns %s", getEntidade());
-                System.out.println("Temos equipamentos para aprimorar as suas habilidades!");
-                break;
-            } else {
-                System.out.println("Digite novamente, apenas um número de 1 a 3");
-                break;
-            }
+        //Validação
+        //Validação
+        while (!(nivelDeControleElemental > 0 && nivelDeControleElemental <= 3)) {
+            System.out.println("Digite novamente, apenas um número de 1 a 3");
+            nivelDeControleElemental = getIn().nextInt();
+        }
+        if (nivelDeControleElemental <= 2) {
+            System.out.println("Temos treinamentos no nosso mundo em metaverso!");
+            System.out.println("Também temos equipamentos mais facéis de manusear!");
+        } else {
+            System.out.printf("Então você é um mestre elemental! Que massa %s! \n", getEntidade());
+            System.out.println("Temos equipamentos para aprimorar as suas habilidades!");
         }
 
     }
@@ -40,10 +39,5 @@ public class Elemental extends Client {
         System.out.println("Espécie: " + especie);
         System.out.println("Tipo elemental: " + tipoElemental);
         System.out.println("Nivel de controle do elemental: " + nivelDeControleElemental);
-    }
-
-    @Override
-    public void adicionarItens() {
-        super.adicionarItens();
     }
 }
