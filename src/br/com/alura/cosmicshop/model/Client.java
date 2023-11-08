@@ -9,14 +9,13 @@ import java.util.Scanner;
 
 public class Client implements Comparable<Client> {
     //Variaveis, construtor, getters e setters
-    private String nome;
+    private String entidade;
     private String planeta;
     private String descricaoDaCompra;
     private double valorDaCompra;
     private double limiteDoCartao;
     private String plano;
     private String sair; //para sair do menu ou inserir dados iniciais
-    private String sair2;
     private String raridade; //Criado para remover o bug do nextInt (o nextInt() não consome a quebra de linha)
     private Scanner in = new Scanner(System.in); //Encapsulando Scanner
     private List<ItemCompra> arrayItensDeCompras = new ArrayList<>(); //Aqui vai ser armazado o que for instanciado no adicionar item
@@ -24,7 +23,7 @@ public class Client implements Comparable<Client> {
     //Não vamos inserir diretamente no construtor, vamos inserir atráves de metodos para o usuario inserir pelo Scanner
     public Client(String nome, String planeta, String descricaoDaCompra, double valorDaCompra, double limiteDoCartao) {
 
-        this.nome = nome;
+        this.entidade = nome;
         this.planeta = planeta;
         this.descricaoDaCompra = descricaoDaCompra;
         this.valorDaCompra = valorDaCompra;
@@ -35,12 +34,12 @@ public class Client implements Comparable<Client> {
 
     }
 
-    public String getNome() {
-        return nome;
+    public String getEntidade() {
+        return entidade;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setEntidade(String entidade) {
+        this.entidade = entidade;
     }
 
     public String getPlaneta() {
@@ -75,29 +74,38 @@ public class Client implements Comparable<Client> {
         this.limiteDoCartao = limiteDoCartao;
     }
 
-    //Metodos mais genericos da classe mae
-    public void inserirLimite(double limiteDoCartao) {
-        this.limiteDoCartao += limiteDoCartao;
+    public Scanner getIn() {
+        return in;
     }
+
+    public void setIn(Scanner in) {
+        this.in = in;
+    }
+
+    //    //Metodos mais genericos da classe mae
+//    public void inserirLimite(double limiteDoCartao) {
+//        this.limiteDoCartao += limiteDoCartao;
+//    } nem to usando...
 
     //Forma mais otimizada e objetiva
     public void inserirDadosIniciais() {
         System.out.println("Digite a sua entidade: ");
-        this.nome = this.in.nextLine();
+        this.entidade = this.in.nextLine();
         System.out.println("Digite seu planeta: ");
         this.planeta = this.in.nextLine();
         System.out.println("""
-                Junte-se a nós e explore o cosmos infinito. 
-                Quer participar? Digite 'QUERO!'
+                Faça compras e participe de um plano da nossa loja cósmica!
+                Quer participar? Aperte enter!
                 Ou 'Sair' para voltar ao seu planeta...
                 """);
         this.sair = this.in.nextLine();
         while (!this.sair.equals("Sair")) {
             System.out.println("""
-                    Planos disponiveis: (Em breve teremos o plano Metaverso)
+                    Digite o seu plano:
                     Astro studies 📚
                     Stellar transport 🚀
                     Centro de Apoio Interspacial (CAI) 🚰
+                    (Em breve teremos o plano Metaverso)
                         """);
             this.plano = this.in.nextLine().toUpperCase(); //O to upper case vai servir pra ignorar se é minusculo ou maisculo quando o usuario digitar
             if (this.plano.equals("Astro studies".toUpperCase())) {
@@ -118,7 +126,7 @@ public class Client implements Comparable<Client> {
                         %n""", this.limiteDoCartao);
                 break;
 
-            } else if (this.plano.equals("Centro de Apoio Interspacial (CAI)".toUpperCase())) {
+            } else if (this.plano.equals("Centro de Apoio Interspacial".toUpperCase())) {
                 this.limiteDoCartao = 300000.80;
                 System.out.printf("""
                         A CAI é uma instalação dedicada a fornecer assistência, recursos e suporte para comunidades em ambientes interestelares.
@@ -128,7 +136,7 @@ public class Client implements Comparable<Client> {
                 break;
 
             } else {
-                System.out.println("Opção inválida. Tente novamente.");
+                System.out.println("Opção inválida. Aperte enter e tente novamente.");
             }
             //Se eu não colocar essa linha ficará em um loop infinito, pois preciso que o usuario digite, para o while ler o valor novamente
             //Pois assim que o loop se encerra, ele não volta na variavel da linha 87, ele executa o loop novamente, então tenho que perguntar novamente...
@@ -145,11 +153,11 @@ public class Client implements Comparable<Client> {
                                 
                                 
                 Olá %s!
-                Digite 'continuar' caso queira adquirir algum item
+                Aperte enter para comprar itens da nossa loja
                 Ou 'sair' para encerrar agora o sistema
-                """, nome);
-        this.sair2 = this.in.nextLine();
-        while (!this.sair2.equals("Sair")) {
+                """, entidade);
+        this.sair = this.in.nextLine();
+        while (!this.sair.equals("Sair")) {
             System.out.println("""
                                         
                     O que você procura?
@@ -158,12 +166,14 @@ public class Client implements Comparable<Client> {
 
             System.out.println("Digite o valor da sua compra: ");
             this.valorDaCompra = this.in.nextDouble();
+            //Validações
             if (limiteDoCartao <= 0) {
                 System.out.println("Você não tem stelares");
                 break;
             } else if (this.valorDaCompra > this.limiteDoCartao) {
                 System.out.println("Saldo insuficiente | Limite do cartão estelar");
                 System.out.println(this.limiteDoCartao);
+                this.in.nextLine(); // Consumir a quebra de linha da linha 168
                 continue;
             }
             this.limiteDoCartao = this.limiteDoCartao - this.valorDaCompra;
@@ -184,8 +194,8 @@ public class Client implements Comparable<Client> {
                     Limite disponível:
                     %.2f
                     """, descricaoDaCompra, valorDaCompra, raridade, limiteDoCartao);
-            System.out.println("Digite qualquer coisa se quiser continuar, ou 'Sair' para finalizar as compras");
-            this.sair2 = this.in.nextLine();
+            System.out.println("Aperte enter para continuar comprando ou digite 'Sair' para finalizar as compras");
+            this.sair = this.in.nextLine();
         }
     }
 
@@ -207,7 +217,7 @@ public class Client implements Comparable<Client> {
     }
 
     public void exibirCliente() {
-        System.out.println(getNome());
+        System.out.println(getEntidade());
         System.out.println(getPlaneta());
         System.out.println(plano);
         System.out.println(limiteDoCartao);
@@ -215,6 +225,6 @@ public class Client implements Comparable<Client> {
 
     @Override
     public int compareTo(Client outroClient) {
-        return this.getNome().compareTo(outroClient.getNome());
+        return this.getEntidade().compareTo(outroClient.getEntidade());
     }
 }
