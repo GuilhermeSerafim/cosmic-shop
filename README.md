@@ -1,6 +1,6 @@
-# 🚀 Cosmic Shop - Seu portal intergaláctico de compras 🪐
+# 🚀 Cosmic Shop🪐
 
-Bem-vindo ao Cosmic Shop, o melhor lugar para explorar e adquirir itens raros de todo o cosmos! Este é um projeto intergaláctico que demonstra um sistema de compras em Java. Neste projeto, você pode criar seu perfil de cliente, escolher entre diferentes planos e adquirir itens cósmicos raros de diferentes planetas. 
+Bem-vindo ao Cosmic Shop, o melhor lugar para explorar e adquirir itens raros de todo o cosmos! Este é um projeto intergaláctico que demonstra um sistema de compras em Java. Neste projeto, você pode criar seu perfil de cliente, escolher entre diferentes planos e adquirir itens cósmicos raros de diferentes planetas. Use a sua criatividade!
 
 ## ℹ️ Descrição do Projeto
 
