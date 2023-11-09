@@ -1,7 +1,5 @@
 package br.com.alura.cosmicshop.model;
 
-import br.com.alura.cosmicshop.calculations.ItemCompra;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;

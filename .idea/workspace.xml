@@ -6,10 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2875622b-9496-4b0c-ae99-e25cca361cac" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/com/alura/cosmicshop/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/com/alura/cosmicshop/main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/com/alura/cosmicshop/model/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/com/alura/cosmicshop/model/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/br/com/alura/cosmicshop/model/Elemental.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/com/alura/cosmicshop/model/Elemental.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/com/alura/cosmicshop/model/Humano.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/com/alura/cosmicshop/model/Humano.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,17 +36,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/T600517/dev/screen-match2-desafio",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="ExtractSuperBase.RECENT_KEYS">
       <recent name="br.com.alura.cosmicshop.model" />

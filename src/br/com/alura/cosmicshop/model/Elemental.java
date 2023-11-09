@@ -17,7 +17,6 @@ public class Elemental extends Client {
         System.out.println("Digite um número de 1 a 3");
         nivelDeControleElemental = getIn().nextInt();
         //Validação
-        //Validação
         while (!(nivelDeControleElemental > 0 && nivelDeControleElemental <= 3)) {
             System.out.println("Digite novamente, apenas um número de 1 a 3");
             nivelDeControleElemental = getIn().nextInt();

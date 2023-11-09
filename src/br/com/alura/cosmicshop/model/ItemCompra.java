@@ -1,4 +1,4 @@
-package br.com.alura.cosmicshop.calculations;
+package br.com.alura.cosmicshop.model;
 
 public class ItemCompra {
     private String descricao;
