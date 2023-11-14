@@ -80,25 +80,20 @@ public class Client implements Comparable<Client> {
                 break;
 
             } else {
-                System.out.println("Opção inválida. Aperte enter e tente novamente.");
+                System.out.println("Opção inválida. Tente novamente.");
             }
-            //Se eu não colocar essa linha ficará em um loop infinito, pois preciso que o usuario digite, para o while ler o valor novamente
-            //Pois assim que o loop se encerra, ele não volta na variavel da linha 87, ele executa o loop novamente, então tenho que perguntar novamente...
-            this.plano = this.in.nextLine().toUpperCase();
         }
 
     }
 
-    //Criando menu
     public void adicionarItens() {
-
 
         System.out.printf("""
                                 
                                 
                 Olá %s!
                 Aperte enter para comprar itens da nossa loja
-                Ou 'sair' para encerrar agora o sistema
+                Ou 'Sair' para encerrar agora o sistema
                 """, entidade);
         this.sair = this.in.nextLine();
         while (!this.sair.equals("Sair")) {
@@ -117,7 +112,7 @@ public class Client implements Comparable<Client> {
             } else if (valorDaCompra > this.limiteDoCartao) {
                 System.out.println("Saldo insuficiente | Limite do cartão estelar");
                 System.out.println(this.limiteDoCartao);
-                this.in.nextLine(); // Consumir a quebra de linha da linha 168
+                this.in.nextLine(); //Consumir nextDouble
                 continue;
             }
             this.limiteDoCartao = this.limiteDoCartao - valorDaCompra;
